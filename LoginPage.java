@@ -1,59 +1,48 @@
-package TESTUI;
+package Dresses;
+
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 
 public class LoginPage {
-
 	
-	  public static void main(String[] args) {
-	  
-	  System.setProperty("webdriver.chrome.driver",
-	  "C:\\Browserdriver\\chromedriver.exe");
-	  
-	  ChromeDriver driver = new ChromeDriver();
-	  driver.get("https://www.saucedemo.com/");
-	  driver.manage().window().maximize();
-	  
-	  WebElement EmailBox1 = driver.findElement(By.id("user-name"));
-	  EmailBox1.sendKeys("standard_user"); WebElement PaswordBox =
-	  driver.findElement(By.id("password")); PaswordBox.sendKeys("secret_sauce");
-	  WebElement nextBttn = driver.findElement(By.id("login-button"));
-	  nextBttn.click();
-	 
+	
+	public static void main(String[] args) throws InterruptedException {
+			
+			
+			System.setProperty("webdriver.chrome.driver","C:\\Browserdriver\\chromedriver.exe");
+			  
+			ChromeDriver driver = new ChromeDriver();
+			driver.get("https://automationpractice.com/");
+			driver.manage().window().maximize();
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			Thread.sleep(2000);
+			
+			// Login
+			
+			WebElement SignBtn = driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a"));
+			SignBtn.click();
+			Thread.sleep(2000);
+			js.executeScript("window.scrollBy(0,300)");
+			
+			WebElement EmlBtn = driver.findElement(By.id("email"));
+			EmlBtn.click();
+			Thread.sleep(1000);
+			EmlBtn.sendKeys("randhirall20@gmail.com");
+			Thread.sleep(1000);
+			
+			WebElement PwdBtn = driver.findElement(By.id("passwd"));
+			PwdBtn.click();
+			PwdBtn.sendKeys("automation");
+			Thread.sleep(1000);
+			
+			WebElement SignBttn = driver.findElement(By.id("SubmitLogin"));
+			SignBttn.click();
+			
+			
+	}
 
-	/*
-	 * WebDriver driver;
-	 * 
-	 * private WebDriver driver1;
-	 * 
-	 * public LoginPage(WebDriver driver) { this.driver1 = driver;
-	 * 
-	 * }
-	 * 
-	 * @FindBy(how=How.NAME,using="user-name")
-	 * 
-	 * @CacheLookup WebElement user-name;
-	 * 
-	 * @FindBy(how = How.NAME, using = "password")
-	 * 
-	 * @CacheLookup WebElement password;
-	 * 
-	 * @FindBy(how = How.NAME, using = "login")
-	 * 
-	 * @CacheLookup WebElement login;
-	 * 
-	 * public void loginWordPress(String use, String Pass) { try {
-	 * user-name.sendKeys(standard_user); Thread.sleep(2000);
-	 * password.sendKeys(secret_sauce); login.click();
-	 * 
-	 * } catch (InterruptedException e) { e.printStackTrace(); } }
-	 */
-
-}
 }
